@@ -1,0 +1,6 @@
+/_pycache
+*.pyc
+/driver.py
+/test.py
+*.json
+*.env
