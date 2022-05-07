@@ -1,2 +1,2 @@
-# ThoseDarnBrothers.py
+# SomeCureForFools.py
 A python library for interacting with the league of legends api
