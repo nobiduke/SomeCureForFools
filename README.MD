@@ -1,2 +1,2 @@
-# SomeCureForFools.py
+# SomeCureForFools
 A python library for interacting with the league of legends api
