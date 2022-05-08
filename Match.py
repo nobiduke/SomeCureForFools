@@ -11,6 +11,7 @@ from Player import Player
 class Match:
     def __init__(self, info) -> None:
 
+        self.gameId = info["gameId"]
         self.startTimeStamp = info["gameStartTimestamp"]
         self.duration = info["gameDuration"]
         self.gameMode = info["gameMode"]
