@@ -59,19 +59,18 @@ class User:
     def updateRank(self, summoner): summoner.updateRank(self.headers)
     # returns RankInfo type, or the default condition given if there is no RankedSolo
     def getRankedSolo(self, summoner, default=None): return summoner.getRankedSolo(self.headers, default)
-    # returns Match if the summoner is in a match, else default
+    # returns LiveMatch if the summoner is in a match, else default
     def getCurrentMatchBySummmoner(self, summoner, default=None): return summoner.getCurrentMatch(self.headers, default)
     # returns Match if the summoner name is in a match, else default
-    def getCurrentMatchByName(self, name, region="na1", default=None):
-        pass
+    def getCurrentMatchByName(self, name, region="na1", default=None): return Summoner(name, self.headers, region).getCurrentMatch(self.headers, default)
 
 
     # returns Player given a Match and name
-    def getPlayerFromMatch(self, match, summoner=None, summonerName=None, default=None):
-        if summoner is not None:
+    def getPlayerFromMatch(self, match, summoner=None, default=None):
+        if isinstance(summoner, Summoner):
             return match.getSummoner(summoner.summonerName, self.data, default)
-        elif summonerName:
-            return match.getSummoner(summonerName, self.data, default)
+        elif isinstance(summoner, str):
+            return match.getSummoner(summoner, self.data, default)
         
         return default
     
@@ -79,7 +78,7 @@ class User:
     # returns Match if the summoner has match in their history
     def getMatchByNumber(self, summoner, index, default=None, queueType=None):
         # makes sure count is valid number that the api will receive
-        if index > 100: raise ValueError("Index must be below 100")
+        if index > 99: raise ValueError("Index must be below 99")
         
         # looks for the summoners match history, else returns default
         matchIds = summoner.getMatchHistory(self.headers, default=default, count=(index+1), queueType=queueType)
