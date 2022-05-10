@@ -66,7 +66,7 @@ class User:
 
 
     # returns Player given a Match and name
-    def getPlayerFromMatch(self, match, summoner=None, default=None):
+    def getPlayerFromMatch(self, match, summoner, default=None):
         if isinstance(summoner, Summoner):
             return match.getSummoner(summoner.summonerName, self.data, default)
         elif isinstance(summoner, str):
