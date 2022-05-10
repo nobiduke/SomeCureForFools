@@ -1,4 +1,6 @@
-import requests
+from distutils.log import debug
+import logging, sys
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 import json
 
 def checkLink(info):
@@ -9,12 +11,10 @@ def checkLink(info):
     if info.status_code >= 400:
         # forbidden error
         if info.status_code == 403 or info.status_code == 401:
-            print("Invalid api key: try refreshing key, or if the key is known to be valid, refresh")
-            return False
+            raise ValueError("Invalid api key: try refreshing key, or if the key is known to be valid, refresh")
         # data not found error
         elif info.status_code == 404:
-            print("Player not found, maybe try a different region")
-            return False
+            raise ValueError("Player not found, maybe try a different region")
         else:
             raise BaseException(f"Servers may be down or unresponsive: Status {info.status_code}")
 
@@ -22,7 +22,7 @@ def checkLink(info):
     try:
         info = info.json()
     except json.JSONDecodeError:
-        print("Failed to decode player data")
+        logging.debug("Failed to decode player data")
         return False
     
     return info
