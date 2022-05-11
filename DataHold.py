@@ -88,7 +88,7 @@ class DataHold:
         champions = checkLink(r)
 
         if not champions:
-            print("Failed to update champions.")
+            # print("Failed to update champions.")
             return
 
         r.close()
@@ -122,7 +122,7 @@ class DataHold:
         runes = checkLink(r)
 
         if not runes:
-            print("Failed to update runes.")
+            # print("Failed to update runes.")
             return
 
         r.close()
@@ -148,7 +148,7 @@ class DataHold:
 
         spells = checkLink(r)
         if not spells:
-            print("Failed to update spells.")
+            # print("Failed to update spells.")
             return
 
         r.close()
@@ -179,6 +179,7 @@ class DataHold:
 
 
     def isUpdatedAndFilled(self):
+        self.getUpdate()
         
         for value in self.updates.values():
             if value != self.version: return False
