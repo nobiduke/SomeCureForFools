@@ -15,9 +15,9 @@ class RankInfo:
         self.queueName = " ".join(self.queueType.split('_')).title()
         self.tier = info["tier"]
         self.division = info["rank"]
-        self.lp = info["leaguePoints"]
-        self.wins = info["wins"]
-        self.losses = info["losses"]
+        self.lp = int(info["leaguePoints"])
+        self.wins = int(info["wins"])
+        self.losses = int(info["losses"])
         self.hotStreak = info["hotStreak"]
         self.inactive = info["inactive"]
         self.series = info.get("miniSeries")
