@@ -226,7 +226,7 @@ class DataHold:
     def getChampionName(self, idNum, default=None): 
         try: return self.champions[idNum]["name"] 
         except KeyError: return default
-    def getChampionImgFull(self, idNum, default=None): 
+    def getChampionIconImg(self, idNum, default=None): 
         try: return self.champions[idNum]["image"]
         except KeyError: return default
     def getChampionBlurb(self, idNum, default=None): 
@@ -236,7 +236,7 @@ class DataHold:
         try: return self.champions[idNum]["title"]
         except KeyError: return default
     # platforms
-    def getRegionByPlatform(self, platform, default=None):
+    def getRegionalByPlatform(self, platform, default=None):
         try: return self.regionalLinks[self.platforms[platform]]
         except KeyError: return default
 
@@ -244,11 +244,11 @@ class DataHold:
     def isAlive(self): return self.exist
 
 
-    def close(self):
+    def close(self, filename="datahold.json"):
         # updates the file if the file has modified
         if self.isChanged:
             self.isChanged = False
             
-            with open("datahold.json", "w") as outFile:
+            with open(filename, "w") as outFile:
                 json.dump(vars(self), outFile, indent='\t')
                 outFile.close()

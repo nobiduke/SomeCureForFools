@@ -20,11 +20,12 @@ class RankInfo:
         self.losses = info["losses"]
         self.hotStreak = info["hotStreak"]
         self.inactive = info["inactive"]
-        
-        if info.get("miniSeries"):
-            self.series = info["miniSeries"]
-        else:
-            self.series = None
+        self.series = info.get("miniSeries")
+
+        # if info.get("miniSeries"):
+        #     self.series = info["miniSeries"]
+        # else:
+        #     self.series = None
 
     def __repr__ (self):
         return (f"Type: {self.queueName}, Rank: {self.tier} {self.division}, Wins: {self.wins}, Losses: {self.losses}")
