@@ -8,25 +8,28 @@ Desc: The class that holds the data for a player within a LiveMatch
 
 class LivePlayer:
     def __init__(self, info)->None:
+        # identity
+        self.summonerName = info["summonerName"]
+        self.teamName = "Blue" if info["teamId"] == 100 else "Red"
+        self.summonerId = str(info["summonerId"])
+        self.teamId = str(info["teamId"])
         
+        # the ids :(
         self.perkStyleId = str(info["perks"]["perkStyle"])
         self.perkSubStyleId = str(info["perks"]["perkSubStyle"])
         self.perkIds = info["perks"]["perkIds"]
-        self.summonerId = str(info["summonerId"])
         self.spell1Id = str(info["spell1Id"])
         self.spell2Id = str(info["spell2Id"])
-        self.teamId = info["teamId"]
         self.championId = str(info["championId"])
         self.profileIconId = str(info["profileIconId"])
 
-        self.summonerName = info["summonerName"]
+        # the names :)
         self.championName = str
         self.perkStyle = str
         self.perkSubStyle = str
         self.perkNames = []
         self.spell1 = str
         self.spell2 = str
-        self.teamName = "Blue" if self.teamId == 100 else "Red"
 
     def updateInfo(self, data):
         
