@@ -10,6 +10,7 @@ class Player:
         self.summonerId = info["summonerId"]
         self.puuid = info["puuid"]
         self.teamId = str(info["teamId"])
+        self.summonerName = info["summonerName"]
 
         # useful stats
         self.kills = int(info["kills"])
@@ -23,14 +24,14 @@ class Player:
         self.win = info["win"]
 
         # fun stats
-        self.abilityCasts = {"q": info["spell1Casts"], "w": info["spell2Casts"], "e": info["spell3Casts"], "r": info["spell4Casts"],
-                             "s1": info["summoner1Casts"], "s2": info["summoner2Casts"]}
-        self.ccTime = info["timeCCingOthers"]
-        self.consumablesPurchased = info["consumablesPurchased"]
-        self.totalTimeSpentDead = info["totalTimeSpentDead"]
-        self.pentakills = info["pentaKills"]
-        self.goldEarned = info["goldEarned"]
-        self.baronKills = info["baronKills"]
+        self.abilityCasts = {"q": int(info["spell1Casts"]), "w": int(info["spell2Casts"]), "e": int(info["spell3Casts"]), "r": int(info["spell4Casts"]),
+                             "s1": int(info["summoner1Casts"]), "s2": int(info["summoner2Casts"])}
+        self.ccTime = int(info["timeCCingOthers"])
+        self.consumablesPurchased = int(info["consumablesPurchased"])
+        self.totalTimeSpentDead = int(info["totalTimeSpentDead"])
+        self.pentakills = int(info["pentaKills"])
+        self.goldEarned = int(info["goldEarned"])
+        self.baronKills = int(info["baronKills"])
         if info.get("challenges"):
             self.challenges = info["challenges"]
 
@@ -47,7 +48,6 @@ class Player:
                 self.perkIds.append(str(perk["perk"]))
 
         # the names :)
-        self.summonerName = info["summonerName"]
         # using the DataHold process the ids that the player stores
         self.championName = data.getChampionName(self.championId)
         self.championImg = data.getChampionImgFull(self.championId)
