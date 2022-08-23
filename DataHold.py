@@ -70,7 +70,7 @@ class DataHold:
         # returns true if the version had an update, else false
         r = requests.get("https://ddragon.leagueoflegends.com/api/versions.json", headers=self.headers)
         
-        if r.json[0] != self.version:
+        if r.json()[0] != self.version:
             self.version = r.json()[0]
             self.isChanged = True
             return True
