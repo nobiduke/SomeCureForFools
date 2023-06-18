@@ -47,7 +47,7 @@ class User:
         if regionalLink:
             summoner = Summoner(name, self.headers, region, regionalLink)
         elif self.data.isAlive():
-            summoner = Summoner(name, self.headers, region, self.data.getRegionByPlatform(region))
+            summoner = Summoner(name, self.headers, region, self.data.getRegionalByPlatform(region))
         else:
             summoner = Summoner(name, self.headers, region)
         if summoner.isAlive():

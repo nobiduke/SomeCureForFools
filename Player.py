@@ -50,7 +50,7 @@ class Player:
         # the names :)
         # using the DataHold process the ids that the player stores
         self.championName = data.getChampionName(self.championId)
-        self.championImg = data.getChampionImgFull(self.championId)
+        self.championImg = data.getChampionIconImg(self.championId)
         self.spell1 = data.getSpellName(self.spell1Id)
         self.spell2 = data.getSpellName(self.spell2Id)
         self.perkStyle = data.getPerkStyleName(self.perkStyleId)
